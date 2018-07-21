@@ -47,9 +47,8 @@ class StringContainer
 
             if ($item) {
                 $result[] = $item;
-            } else if ($this->allowEmpty) {
-                $result[] = $item;
             }
+
             $item = '';
         }
 
