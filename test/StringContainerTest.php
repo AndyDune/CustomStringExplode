@@ -25,7 +25,7 @@ class StringContainerTest extends TestCase
         $explode = new StringContainer($numbers);
 
         $results = $explode->explode('123 13-4 00');
-        $this->assertCount(3, $results);
+        $this->assertCount(4, $results);
         $this->assertTrue(in_array('123', $results));
         $this->assertTrue(in_array('13', $results));
         $this->assertTrue(in_array('4', $results));
@@ -33,6 +33,11 @@ class StringContainerTest extends TestCase
         $explode->setAllowEmpty(false);
         $results = $explode->explode('adsad asdasd  = =sad-iasknd ');
         $this->assertCount(0, $results);
+
+        $results = $explode->explode('123');
+        $this->assertCount(1, $results);
+        $this->assertTrue(in_array('123', $results));
+
 
     }
 }

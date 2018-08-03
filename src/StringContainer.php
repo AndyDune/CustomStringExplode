@@ -48,8 +48,12 @@ class StringContainer
             if ($item) {
                 $result[] = $item;
             }
-
             $item = '';
+        }
+
+        // A last element
+        if ($item) {
+            $result[] = $item;
         }
 
         return $result;
