@@ -39,6 +39,18 @@ abstract class RuleAbstract
         $this->container = $container;
     }
 
+    /**
+     * Format each result by default.
+     * You may overload this method.
+     *
+     * @param $string
+     * @return string
+     */
+    public function format($string)
+    {
+        return trim($string);
+    }
+
 
     abstract public function check($char, $item, $array);
 }

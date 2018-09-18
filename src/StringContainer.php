@@ -37,23 +37,29 @@ class StringContainer
         $result = [];
 
         $length = mb_strlen($string, 'utf-8');
-        $item = '';
+        $item = null;
         for ($i = 0; $i < $length; $i++) {
             $char = mb_substr($string, $i, 1);
             if ($this->rule->check($char, $item, $result)) {
-                $item .= $char;
+                $item = (string)$item . $char;
                 continue;
             }
 
-            if ($item) {
-                $result[] = $item;
+            if ($item !== null) {
+                $item = $this->rule->format($item);
+                if ($item !== null and $item !== false) {
+                    $result[] = $item;
+                }
             }
-            $item = '';
+            $item = null;
         }
 
         // A last element
-        if ($item) {
-            $result[] = $item;
+        if ($item !== null) {
+            $item = $this->rule->format($item);
+            if ($item !== null and $item !== false) {
+                $result[] = $item;
+            }
         }
 
         return $result;
