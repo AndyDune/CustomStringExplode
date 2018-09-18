@@ -28,7 +28,7 @@ class Email extends RuleAbstract
 
     public function check($char, $item, $array)
     {
-        if (preg_match('|[-_a-z0-9.!#$%&\'"*+-/=?^_`{\|}~@]+|ui', $char)) {
+        if (preg_match('|[-_a-z0-9.!#$%&\'"*+/=?^_`{\|}~@]+|ui', $char)) {
             return true;
         }
         return false;

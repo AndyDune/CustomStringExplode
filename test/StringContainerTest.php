@@ -116,8 +116,8 @@ class StringContainerTest extends TestCase
         $explode = new StringContainer($rule);
 
         $results = $explode->explode('Андрей Рыжов,  ;
-        Andrey Ryzhov
-        simple@example.com
+        Andrey Ryzhov,
+        simple@example.com ,
         disposable.style.email.with+symbol@example.com
         x@example.com
         #!$%&\'*+-/=?^_`{}|~@example.org
