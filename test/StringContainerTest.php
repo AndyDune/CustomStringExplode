@@ -17,6 +17,7 @@ use AndyDune\CustomStringExplode\Rule\CustomDelimiter;
 use AndyDune\CustomStringExplode\Rule\DelimiterWhitespaceCharacter;
 use AndyDune\CustomStringExplode\Rule\Email;
 use AndyDune\CustomStringExplode\Rule\Numbers;
+use AndyDune\CustomStringExplode\Rule\NumbersAndLatinLetters;
 use AndyDune\CustomStringExplode\StringContainer;
 use PHPUnit\Framework\TestCase;
 
@@ -127,6 +128,28 @@ class StringContainerTest extends TestCase
         $this->assertCount(4, $results);
         $this->assertTrue(in_array('simple@example.com', $results));
         $this->assertTrue(in_array('#!$%&\'*+-/=?^_`{}|~@example.org', $results));
+
+    }
+
+    public function testNumbersAndLatinLetters()
+    {
+        $rule = new NumbersAndLatinLetters();
+        $explode = new StringContainer($rule);
+
+        $results = $explode->explode('adqwdqw123 adasdsa;78
+        првиетhellow
+        ');
+        $this->assertCount(4, $results);
+        $this->assertTrue(in_array('adqwdqw123', $results));
+        $this->assertTrue(in_array('adasdsa', $results));
+        $this->assertTrue(in_array('78', $results));
+        $this->assertTrue(in_array('hellow', $results));
+
+        $results = $explode->explode('');
+        $this->assertCount(0, $results);
+
+        $results = $explode->explode('8asWWW');
+        $this->assertCount(1, $results);
 
     }
 }
