@@ -32,3 +32,53 @@ And execute command:
 ```
 php composer.phar update
 ```
+
+Instruction
+-------------
+
+There is any string we want to convert into array. String may be set of numbers with any delimiters, it can be email set and more.
+
+It is better to see how it work for on specific points. 
+
+## Rule: Numbers
+
+```php
+use AndyDune\CustomStringExplode\Rule\Numbers;
+use AndyDune\CustomStringExplode\StringContainer;
+
+$numbers = new Numbers();
+$explode = new StringContainer($numbers);
+$results = $explode->explode('123 13-4 00');
+
+// Result is
+$result = [123, 13, 4, 00];
+
+```
+
+## Rule: Emails
+
+```php
+use AndyDune\CustomStringExplode\Rule\Email;
+use AndyDune\CustomStringExplode\StringContainer;
+
+$rule = new Email();
+$explode = new StringContainer($rule);
+
+$results = $explode->explode('Андрей Рыжов,  ;
+Andrey Ryzhov,
+simple@example.com ,
+disposable.style.email.with+symbol@example.com
+x@example.com
+#!$%&\'*+-/=?^_`{}|~@example.org
+"()<>[]:,;@\\\"!#$%&\'-/=?^_`{}| ~.a"@example.org
+');
+
+// Result is
+$result = [
+    'simple@example.com', 
+    'disposable.style.email.with+symbol@example.com', 
+    'x@example.com', 
+    '#!$%&'*+-/=?^_`{}|~@example.org'
+];
+
+```
