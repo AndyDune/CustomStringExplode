@@ -82,3 +82,56 @@ $result = [
 ];
 
 ```
+
+Create own rules
+----------------
+Ypu may build your onw rules for explode strings as you wish. All rules mast implement `RuleAbstract` interface.
+
+Lets look at the code:
+```php
+namespace AndyDune\CustomStringExplode\Rule;
+
+
+use AndyDune\CustomStringExplode\StringContainer;
+
+abstract class RuleAbstract
+{
+    /**
+     * @var StringContainer
+     */
+    protected $container;
+
+    /**
+     * @return StringContainer
+     */
+    public function getContainer()
+    {
+        return $this->container;
+    }
+
+    /**
+     * @param StringContainer $container
+     */
+    public function setContainer($container)
+    {
+        $this->container = $container;
+    }
+
+    public function format($string)
+    {
+        return trim($string);
+    }
+
+    /**
+    * @params string $char current char for check
+    * @params string $item previously collected char
+    * @params array $array array was colected during previous executions of method
+    */
+    abstract public function check($char, $item, $array);
+}
+```
+
+Ypu need to define method `check` surely. This method returns boolean value:
+
+- `true` - current char may be the part of string
+- `false` - current char is separator 
