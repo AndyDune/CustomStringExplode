@@ -83,6 +83,33 @@ $result = [
 
 ```
 
+## Rule: NumbersAndLatinLetters
+
+I used it for extract hashes from any texts.
+
+```php
+use AndyDune\CustomStringExplode\StringContainer;
+use AndyDune\CustomStringExplode\Rule\NumbersAndLatinLetters;
+
+$rule = new NumbersAndLatinLetters();
+$explode = new StringContainer($rule);
+
+$results = $explode->explode('adqwdqw123 adasdsa;78
+првиетhellow
+');
+
+// Result is
+$result = [
+    'adqwdqw123', 
+    'adasdsa', 
+    '78', 
+    'hellow'
+];
+
+
+```
+
+
 Create own rules
 ----------------
 Ypu may build your onw rules for explode strings as you wish. All rules mast implement `RuleAbstract` interface.
