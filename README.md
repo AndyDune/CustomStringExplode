@@ -105,14 +105,12 @@ $result = [
     '78', 
     'hellow'
 ];
-
-
 ```
 
 
-Create own rules
+Create custom rules
 ----------------
-Ypu may build your onw rules for explode strings as you wish. All rules mast implement `RuleAbstract` interface.
+You may build your onw rules for explode strings as you wish. All rules mast implement `RuleAbstract` interface.
 
 Lets look at the code:
 ```php
@@ -158,7 +156,10 @@ abstract class RuleAbstract
 }
 ```
 
-Ypu need to define method `check` surely. This method returns boolean value:
+You need to define method `check` surely. This method returns boolean value:
 
 - `true` - current char may be the part of string
 - `false` - current char is separator 
+
+Overload method `format` for final check every result array item. It make trim by default. 
+Method may returns `null` or `false` if item must be deleted from array.
