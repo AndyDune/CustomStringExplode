@@ -47,7 +47,6 @@ class StringContainerTest extends TestCase
     public function testDelimiterWhitespaceCharacter()
     {
         $rule = new DelimiterWhitespaceCharacter();
-
         $explode = new StringContainer($rule);
 
         $results = $explode->explode('123 13-4 00');

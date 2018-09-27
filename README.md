@@ -108,6 +108,26 @@ $result = [
 ```
 
 
+## Rule: DelimiterWhitespaceCharacter
+
+It helps to explode string with any white space delimiter.
+```php
+use AndyDune\CustomStringExplode\Rule\DelimiterWhitespaceCharacter;
+use AndyDune\CustomStringExplode\StringContainer;
+$rule = new DelimiterWhitespaceCharacter();
+$explode = new StringContainer($rule);
+
+$results = $explode->explode('123 13-4 00');
+
+// Result is
+$result = [
+    '123', 
+    '13-4', 
+    '00' 
+];
+```
+
+
 Create custom rules
 ----------------
 You may build your onw rules for explode strings as you wish. All rules mast implement `RuleAbstract` interface.
@@ -115,8 +135,6 @@ You may build your onw rules for explode strings as you wish. All rules mast imp
 Lets look at the code:
 ```php
 namespace AndyDune\CustomStringExplode\Rule;
-
-
 use AndyDune\CustomStringExplode\StringContainer;
 
 abstract class RuleAbstract
