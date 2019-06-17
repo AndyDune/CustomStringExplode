@@ -23,6 +23,13 @@ use PHPUnit\Framework\TestCase;
 
 class StringContainerTest extends TestCase
 {
+    /**
+     * @covers \AndyDune\CustomStringExplode\StringContainer::explode
+     * @covers \AndyDune\CustomStringExplode\StringContainer::setAllowEmpty
+     * @covers \AndyDune\CustomStringExplode\StringContainer::setRule
+     * @covers \AndyDune\CustomStringExplode\Rule\RuleAbstract::setContainer
+     * @covers Numbers::check
+     */
     public function testNumbers()
     {
         $numbers = new Numbers();
@@ -44,6 +51,11 @@ class StringContainerTest extends TestCase
         $this->assertTrue(in_array('123', $results));
     }
 
+    /**
+     * @covers DelimiterWhitespaceCharacter::check
+     * @covers \AndyDune\CustomStringExplode\StringContainer::explode
+     * @covers \AndyDune\CustomStringExplode\StringContainer::setRule
+     */
     public function testDelimiterWhitespaceCharacter()
     {
         $rule = new DelimiterWhitespaceCharacter();
@@ -96,6 +108,11 @@ class StringContainerTest extends TestCase
         $this->assertTrue(in_array('mail.as@mail.ru', $results));
     }
 
+    /**
+     * @covers CustomDelimiter::check
+     * @covers \AndyDune\CustomStringExplode\StringContainer::explode
+     * @covers \AndyDune\CustomStringExplode\StringContainer::setRule
+     */
     public function testCustomDelimiter()
     {
         $rule = new CustomDelimiter(',;');
@@ -109,7 +126,9 @@ class StringContainerTest extends TestCase
         $this->assertTrue(in_array('Andrey Ryzhov', $results));
     }
 
-
+    /**
+     * @covers Email::check
+     */
     public function testEmail()
     {
         $rule = new Email();
@@ -130,6 +149,9 @@ class StringContainerTest extends TestCase
 
     }
 
+    /**
+     * @covers NumbersAndLatinLetters::check
+     */
     public function testNumbersAndLatinLetters()
     {
         $rule = new NumbersAndLatinLetters();
