@@ -38,7 +38,7 @@ Instruction
 
 There is any string we want to convert into array. String may be set of numbers with any delimiters, it can be email set and more.
 
-It is better to see how it work for on specific points. 
+It is better to see how it works for on specific points. 
 
 ## Rule: Numbers
 
