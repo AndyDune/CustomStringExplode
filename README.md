@@ -6,7 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/andydune/custom-string-explode.svg?style=flat-square)](https://packagist.org/packages/andydune/custom-string-explode)
 
 
-Explode string using custom user rules.
+Explode string using user custom rules.
 
 
 Installation
